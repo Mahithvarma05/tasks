@@ -8,6 +8,8 @@ fun main(args: Array<String>) {
     var item3=Item("keyboard",2000)
     var item4=Item("mobile",20000)
 
+    var li:Int?=null
+
     var cart=ShoppingCart()
 
     cart.addItem(item1)
@@ -20,10 +22,9 @@ fun main(args: Array<String>) {
     var total=cart.totalPrice()
     println("total price $total /-")
 
-    var discount=10
+    var discount=50
     var afterDiscount=cart.applyDiscount(discount)
     println("Price after the discount $afterDiscount /-")
-
 
 
 }
