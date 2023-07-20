@@ -5,9 +5,6 @@ class Access {
         var valid:Int?=Validation().validate(name,password)
         list.forEach { println(it) }
 
-//        for(i in 0 until list.size){
-//            println("${CustomerList().customerList[i]}")
-//        }
 
 
         if(valid!=null){

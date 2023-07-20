@@ -67,7 +67,6 @@ object CustomerList{
         customerList.add(customer2)
         customerList.add(customer3)
 
-
     }
     fun createList() {
         var name:String= readln()
@@ -81,11 +80,9 @@ object CustomerList{
         val customer = Customer(name,password,accountNumber,phoneNum,bankBalance,fixedBalance)
 
         customerList.add(customer)
-//        customerList.forEach { println(it) }
+
         Access().login(name,password,customerList)
-//        for(i in 0 until customerList.size){
-//            println("${customerList[i].name}")
-//        }
+
 
     }
 }

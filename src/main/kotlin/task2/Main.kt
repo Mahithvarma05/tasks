@@ -2,61 +2,51 @@ package task2
 
 fun main(args: Array<String>) {
 
+    println("select the item you need")
+    ShoppingCart().displayItems()
+    var select= readln().toInt()
+    ShoppingCart().addItem(ItemsList.itemstList[select-1])
+    println("Items in cart")
+    ShoppingCart().displayCartItems()
 
-    var item1=Item("pen",20)
-    var item2=Item("cup",200)
-    var item3=Item("keyboard",2000)
-    var item4=Item("mobile",20000)
+    var loop=0
 
-    var li:Int?=null
+    while (loop!=5){
+        println("1->select another item  2->remove item from  cart  3->get price  4-> get 10% discount  5->exit")
+        var choice= readln().toInt()
+        when(choice){
+            1->{
+                var select= readln().toInt()
+                println("${ItemsList.itemstList[select-1]}")
+                ShoppingCart().addItem(ItemsList.itemstList[select-1])
+                println("Items in cart")
+                ShoppingCart().displayCartItems()
+            }
+            2->{
+                println("select remove item from cart")
+                var select= readln().toInt()
+                ShoppingCart().removeItem(select-1)
+                println("Items in cart")
+                ShoppingCart().displayCartItems()
+            }
+            3->{
+                var price=ShoppingCart().totalPrice()
+                println("tota price is $price")
+            }
+            4->{
 
-    var cart=ShoppingCart()
-
-    cart.addItem(item1)
-    cart.addItem(item2)
-    cart.addItem(item3)
-    cart.addItem(item4)
-
-    cart.removeItem(item2)
-
-    var total=cart.totalPrice()
-    println("total price $total /-")
-
-    var discount=50
-    var afterDiscount=cart.applyDiscount(discount)
-    println("Price after the discount $afterDiscount /-")
-
-
-}
-data class Item(val name:String,val price:Int)
-
-class ShoppingCart {
-
-    private var list= ArrayList<Item>()
-
-
-    fun addItem(item:Item) {
-        list.add(item)
-
-    }
-
-    fun removeItem(item: Item) {
-        list.remove(item)
-
-    }
-    fun totalPrice():Int{
-        var sum:Int=0
-        for(i in 0 until list.size){
-            sum+= list[i].price
+                var dicountPrice=ShoppingCart().applyDiscount(10)
+                println("After discount price $dicountPrice /-")
+            }
+            5->{
+                println("Thank you visit again")
+                loop=5
+            }
         }
-        return sum
-    }
-
-    fun applyDiscount(rate: Int): Double? {
-        return totalPrice()?.let { (it - (it * rate) / 100).toDouble() }
-
     }
 
 
 
 }
+
+
